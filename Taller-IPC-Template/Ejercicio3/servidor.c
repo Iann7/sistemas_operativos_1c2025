@@ -46,7 +46,7 @@ int calcular(const char *expresion) {
 }
 
 void aaa(int client_socket,int server_socket){
-    printf("Esperando cuenta desde ");
+    printf("Esperando cuenta\n");
     while(1){
         char input[100]={0};
         int i = recv(client_socket,input,sizeof(input),0);
@@ -94,7 +94,7 @@ int main() {
         
         if(pid_hijo==0){
             printf("HIYAA");
-            //aaa(client_socket,server_socket);
+            aaa(client_socket,server_socket);
         } else{
             continue;
         }

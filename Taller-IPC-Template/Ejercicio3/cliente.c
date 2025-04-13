@@ -22,20 +22,30 @@ int main() {
 
 
      
-// while(1){
-	// // 	char *cuenta;
-	// // 	printf("Ingrese una cuenta: ");
-	// // 	scanf()
+    while(1){
+        char cuenta[100];
+        printf("Ingrese una cuenta: ");
+        scanf("%s", cuenta);
+        if (strcmp(cuenta, "exit") == 0) {
+            printf("Saliendo...\n");
+            close(server_socket);
+            break;
+        }
+        write(server_socket, cuenta,  strlen(cuenta) + 1); // ???
+        int res=-1;
+        read(server_socket, &res, sizeof(res));
+        printf("Cliente: recibí %d del servidor!\n", res);
+	}
 
 
-	// // }
-	 char *cuenta = "2+3";
-     write(server_socket, cuenta,  strlen(cuenta) + 1); // ???
-	 printf("SE ENVIO EL WRITE!");
-	 int res=-1;
-	 read(server_socket, &res, sizeof(res));
-     printf("Cliente: recibí %d del servidor!\n", res);
-     close(server_socket);
-     exit(0);
+    return 0;
+	//  char *cuenta = "2+3";
+    //  write(server_socket, cuenta,  strlen(cuenta) + 1); // ???
+	//  printf("SE ENVIO EL WRITE!");
+	//  int res=-1;
+	//  read(server_socket, &res, sizeof(res));
+    //  printf("Cliente: recibí %d del servidor!\n", res);
+    //  close(server_socket);
+    //  exit(0);
 
 }
